@@ -1,37 +1,36 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export default function CardTable({ color, output }) {
-  console.log(output.crop_name);
-  const tableRow = output.crop_name.map((item, index) => {
-    return (
-      <tr key={index} className="text-md">
-        <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4">
-          {index + 1}
-        </td>
-        <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 text-left">
-          <span
-            className={
-              "font-bold " +
-              +(color === "light" ? "text-blueGray-600" : "text-white")
-            }
-          >
-            {item.name}
-          </span>
-        </td>
-        <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 text-left">
-          <span
-            className={
-              "font-bold " +
-              +(color === "light" ? "text-blueGray-600" : "text-white")
-            }
-          >
-            <img src={item.img} />
-          </span>
-        </td>
-      </tr>
-    );
-  });
+export default function CardTable({ color }) {
+  // const tableRow = output.crop_name.map((item, index) => {
+  //   return (
+  //     <tr key={index} className="text-md">
+  //       <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4">
+  //         {index + 1}
+  //       </td>
+  //       <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 text-left">
+  //         <span
+  //           className={
+  //             "font-bold " +
+  //             +(color === "light" ? "text-blueGray-600" : "text-white")
+  //           }
+  //         >
+  //           {item.name}
+  //         </span>
+  //       </td>
+  //       <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 text-left">
+  //         <span
+  //           className={
+  //             "font-bold " +
+  //             +(color === "light" ? "text-blueGray-600" : "text-white")
+  //           }
+  //         >
+  //           <img src={item.img} />
+  //         </span>
+  //       </td>
+  //     </tr>
+  //   );
+  // });
 
   return (
     <>
@@ -50,7 +49,7 @@ export default function CardTable({ color, output }) {
                   (color === "light" ? "text-blueGray-700" : "text-white")
                 }
               >
-                Recommended Crops
+                Your Followings
               </h3>
             </div>
           </div>
@@ -78,7 +77,7 @@ export default function CardTable({ color, output }) {
                       : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
                   }
                 >
-                  Crop Name
+                  Name
                 </th>
                 <th
                   className={
@@ -88,9 +87,9 @@ export default function CardTable({ color, output }) {
                       : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
                   }
                 >
-                  Crop Image
+                  Analyze
                 </th>
-                {/* 
+
                 <th
                   className={
                     "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
@@ -109,19 +108,10 @@ export default function CardTable({ color, output }) {
                       : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
                   }
                 >
-                  Users
+                  Report
                 </th>
-                <th
-                  className={
-                    "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
-                    (color === "light"
-                      ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
-                      : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
-                  }
-                >
-                  Completion
-                </th>
-                <th
+
+                {/* <th
                   className={
                     "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
                     (color === "light"
@@ -132,7 +122,7 @@ export default function CardTable({ color, output }) {
               </tr>
             </thead>
             <tbody>
-              {tableRow}
+              {/* {tableRow} */}
               {/* <tr>
                 <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
                   <img

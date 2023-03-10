@@ -27,10 +27,10 @@ export default function Footer() {
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap text-center lg:text-left">
             <div className="w-full lg:w-6/12 px-4">
-              <h4 className="text-3xl font-semibold">Demeter</h4>
+              <h4 className="text-3xl font-semibold">Guardify</h4>
               <h5 className="text-lg mt-0 mb-2 text-blueGray-600">
-                Demeter is a software application that helps farmers manage and
-                optimize their agricultural operations.
+                Guardify is a cyber harassment prevention application designed
+                to protect individuals from online abuse and harassment.
               </h5>
               {/* <div className="mt-6 lg:mb-0 mb-6">
                 <button
@@ -61,7 +61,7 @@ export default function Footer() {
             </div>
             <div className="w-full lg:w-6/12 px-4">
               <div className="flex flex-wrap items-top mb-6">
-                <div className="w-full lg:w-4/12 px-4 ml-auto">
+                {/* <div className="w-full lg:w-4/12 px-4 ml-auto">
                   <span className="block uppercase text-blueGray-500 text-sm font-semibold mb-2">
                     Useful Links
                   </span>
@@ -102,7 +102,7 @@ export default function Footer() {
                       </Link>
                     </li>
                   </ul>
-                </div>
+                </div> */}
 
                 {/* <div className="w-full lg:w-4/12 px-4">
                   <span className="block uppercase text-blueGray-500 text-sm font-semibold mb-2">
@@ -151,7 +151,7 @@ export default function Footer() {
           <div className="flex flex-wrap items-center md:justify-between justify-center">
             <div className="w-full md:w-4/12 px-4 mx-auto text-center">
               <div className="text-sm text-blueGray-500 font-semibold py-1">
-                Copyright © {new Date().getFullYear()} Demeter™.
+                Copyright © {new Date().getFullYear()} Guardify.
               </div>
             </div>
           </div>

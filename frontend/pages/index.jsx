@@ -27,7 +27,7 @@ export default function Index() {
                 potentially harmful messages or posts.
               </p>
               <div className="mt-12">
-                <Link href="/disease">
+                <Link href="/file-complaint">
                   <a className="get-started text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-blueGray-800 active:bg-blueGray-500 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150">
                     Get started
                   </a>
@@ -81,7 +81,7 @@ export default function Index() {
               <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-blueGray-700">
                 <img
                   alt="..."
-                  src="https://res.cloudinary.com/atharva7/image/upload/v1664643964/samples/planttree_af1zl9.jpg"
+                  src="https://res.cloudinary.com/sarveshp46/image/upload/v1678444836/cyber_jxf4mp.jpg"
                   className="w-full align-middle rounded-t-lg"
                 />
                 <blockquote className="relative p-8 mb-4">
@@ -97,17 +97,16 @@ export default function Index() {
                     ></polygon>
                   </svg>
                   <h4 className="text-xl font-bold text-white">
-                    Demeter - The Farming Assistant
+                    Guardify - Smart Security
                   </h4>
                   <p className="text-md font-light mt-2 text-white">
-                    Demeter is a software application that helps farmers manage
-                    and optimize their agricultural operations. It can provide a
-                    variety of features such as disease detection, fertilizer
-                    and crop recommendation and weather predictions. It include
-                    features of machine learning to provide farmers with
-                    real-time data and insights to improve efficiency and
-                    productivity. Also it provides a chat bot so that the
-                    queries of the users can be solved within minutes.
+                    Guardify is a cyber harassment prevention application
+                    designed to protect individuals from online abuse and
+                    harassment. The app provides a variety of features to help
+                    users protect themselves from cyberbullying, including
+                    monitoring and reporting tools, automatic blocking of
+                    abusive accounts, and real-time alerts for potentially
+                    harmful messages or posts.
                   </p>
                 </blockquote>
               </div>
@@ -135,13 +134,13 @@ export default function Index() {
                         </svg>
                       </div>
                       <h6 className="text-xl mb-1 font-semibold">
-                        Disease Detection
+                        Automated flagging
                       </h6>
-                      <p className="mb-4 text-blueGray-500">
+                      {/* <p className="mb-4 text-blueGray-500">
                         Demeter allows you to identify dangerous crop diseases
                         and apply an individual approach to treat them, thus
                         increasing disease prevention effectively.
-                      </p>
+                      </p> */}
                     </div>
                   </div>
                   <div className="relative flex flex-col min-w-0">
@@ -163,14 +162,14 @@ export default function Index() {
                         </svg>
                       </div>
                       <h6 className="text-xl mb-1 font-semibold">
-                        Crop Recommendation
+                        Reporting mechanism
                       </h6>
-                      <p className="mb-4 text-blueGray-500">
+                      {/* <p className="mb-4 text-blueGray-500">
                         Various factors like minerals present in the soil,
                         temperature and humidity play an important role in
                         deciding the type of the crop. Gather more information
                         about the same, here.
-                      </p>
+                      </p> */}
                     </div>
                   </div>
                 </div>
@@ -194,13 +193,13 @@ export default function Index() {
                         </svg>
                       </div>
                       <h6 className="text-xl mb-1 font-semibold">
-                        Fertilizer Recommendation
+                        Incident tracking
                       </h6>
-                      <p className="mb-4 text-blueGray-500">
+                      {/* <p className="mb-4 text-blueGray-500">
                         The amount of fertilizers added to soil during the
                         period of cultivation can greatly affect the soil pH and
                         nutrients. Know the right amount from Demeter.
-                      </p>
+                      </p> */}
                     </div>
                   </div>
                   <div className="relative flex flex-col min-w-0">
@@ -222,12 +221,12 @@ export default function Index() {
                         </svg>
                       </div>
                       <h6 className="text-xl mb-1 font-semibold">
-                        Weather Prediction
+                        Filtering and blocking
                       </h6>
-                      <p className="mb-4 text-blueGray-500">
+                      {/* <p className="mb-4 text-blueGray-500">
                         Weather plays an important role in Agriculture. Know the
                         weather with predictions from Demeter.
-                      </p>
+                      </p> */}
                     </div>
                   </div>
                 </div>
@@ -236,7 +235,7 @@ export default function Index() {
           </div>
         </div>
 
-        <div className="container mx-auto overflow-hidden pb-20">
+        {/* <div className="container mx-auto overflow-hidden pb-20">
           <div className="flex flex-wrap items-center">
             <div className="w-full md:w-4/12 px-12 md:px-4 ml-auto mr-auto mt-48">
               <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white">
@@ -487,7 +486,7 @@ export default function Index() {
               </Link>
             </div>
           </div>
-        </div>
+        </div> */}
       </section>
 
       <section className="pb-16 bg-blueGray-200 relative pt-32">
@@ -516,10 +515,10 @@ export default function Index() {
             <div className="w-full text-center lg:w-8/12">
               <h3 className="font-semibold text-3xl">Let&apos;s get started</h3>
               <p className="text-blueGray-500 text-lg leading-relaxed mt-4 mb-4">
-                Smart Agriculture - Cultivate efficiently with us!
+                Guardify - Smart Security
               </p>
               <div className="sm:block flex flex-col mt-10">
-                <Link href="/disease">
+                <Link href="/file-complaint">
                   <a className="get-started text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-blueGray-800 active:bg-blueGray-500 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150">
                     Get started
                   </a>

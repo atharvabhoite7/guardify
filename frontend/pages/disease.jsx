@@ -24,8 +24,8 @@ export default function Disease() {
   // }
   return (
     <Admin
-      title="Disease Detection"
-      headerText="Upload Image to detect crop disease"
+      title="File Complaints"
+      headerText="Enter your details here to file the complaint"
       image={session.user.image}
     >
       <div className="flex flex-wrap mt-4 justify-center">
