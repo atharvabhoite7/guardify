@@ -7,6 +7,11 @@ export default function Disease() {
   const { data: session, status } = useSession();
   console.log(session);
   const [loading, setLoading] = useState(true);
+  const [name, setName] = useState("");
+
+  useEffect(() => {
+    setName(localStorage.getItem("name"));
+  }, []);
 
   // useEffect(() => {
   //   const securePage = () => {
@@ -31,7 +36,7 @@ export default function Disease() {
       <div className="flex flex-wrap mt-4 justify-center">
         <div className="w-full mb-12 xl:mb-0 px-4">
           <div className="text-white">
-            <FileComplaint />
+            <FileComplaint name={name} />
           </div>
         </div>
       </div>

@@ -4,7 +4,8 @@ import { useState } from "react";
 import axios from "axios";
 import ReactLoading from "react-loading";
 
-const FileComplaint = () => {
+const FileComplaint = ({ name }) => {
+  console.log(name);
   const [formData, setFormData] = useState({
     subject: "",
     name: "",
@@ -33,38 +34,39 @@ const FileComplaint = () => {
     console.log(formData);
     let data = null;
 
-    // await axios
-    //   .post("http://localhost:3000/api/file-complaint", {
-    //     subject: formData.subject,
-    //     name: formData.name,
-    //     address: formData.address,
-    //     city: formData.city,
-    //     code: formData.code,
-    //     phone: formData.phone,
-    //     email: formData.email,
-    //     complaint: formData.complaint,
-    //   })
-    //   .then(function (response) {
-    //     setIsDisabled(false);
-    //     setIsLoading(false);
-    //     data = response.data;
-    //     console.log(data);
-    //     setOutput(data);
-    //     console.log(output);
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
-    // setFormData({
-    //   subject: "",
-    //   name: "",
-    //   address: "",
-    //   city: "",
-    //   code: "",
-    //   phone: "",
-    //   email: "",
-    //   complaint: "",
-    // });
+    await axios
+      .post("http://localhost:3000/api/file-complaint", {
+        subject: formData.subject,
+        name: formData.name,
+        address: formData.address,
+        city: formData.city,
+        code: formData.code,
+        phone: formData.phone,
+        email: formData.email,
+        complaint: formData.complaint,
+        reportedName: name,
+      })
+      .then(function (response) {
+        setIsDisabled(false);
+        setIsLoading(false);
+        data = response.data;
+        console.log(data);
+        setOutput(data);
+        console.log(output);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    setFormData({
+      subject: "",
+      name: "",
+      address: "",
+      city: "",
+      code: "",
+      phone: "",
+      email: "",
+      complaint: "",
+    });
   };
   return (
     <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">

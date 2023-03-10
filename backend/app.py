@@ -88,7 +88,7 @@ def followings():
 @app.route("/get-tweets", methods=["POST"])
 def tweets():
     username = request.json["username"]
-    tweets = api.user_timeline(screen_name=username, count=200, tweet_mode="extended")
+    tweets = api.user_timeline(screen_name=username, count=10, tweet_mode="extended")
     # print(tweets[0]._json["full_text"])
 
     all_tweets = []
