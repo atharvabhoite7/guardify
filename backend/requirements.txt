@@ -32,3 +32,5 @@ typing_extensions @ file:///C:/b/abs_89eui86zuq/croot/typing_extensions_16699237
 urllib3 @ file:///C:/b/abs_9bcwxczrvm/croot/urllib3_1673575521331/work
 win-inet-pton @ file:///C:/ci_310/win_inet_pton_1642658466512/work
 wincertstore==0.2
+tweepy~=4.12.1
+pandas~=1.5.1
