@@ -9,18 +9,22 @@ import Layout from "components/Layout";
 
 export default function Index() {
   return (
-    <Layout title="Home / Demeter">
+    <Layout title="Home / Guardify">
       <IndexNavbar fixed />
       <section className="header relative pt-16 items-center flex h-screen max-h-860-px">
         <div className="container mx-auto items-center flex flex-wrap">
           <div className="w-full md:w-8/12 lg:w-6/12 xl:w-6/12 px-4">
             <div className="pt-32 sm:pt-0">
               <h2 className="font-semibold text-4xl text-blueGray-600">
-                Demeter - Smart Agriculture
+                Guardify - Smart Security
               </h2>
               <p className="mt-4 text-lg leading-relaxed text-blueGray-500">
-                Demeter is a software application that helps farmers manage and
-                optimize their agricultural operations.
+                Guardify is a cyber harassment prevention application designed
+                to protect individuals from online abuse and harassment. The app
+                provides a variety of features to help users protect themselves
+                from cyberbullying, including monitoring and reporting tools,
+                automatic blocking of abusive accounts, and real-time alerts for
+                potentially harmful messages or posts.
               </p>
               <div className="mt-12">
                 <Link href="/disease">
@@ -42,8 +46,8 @@ export default function Index() {
           </div>
         </div>
         <img
-          className="absolute top-0 b-auto right-0 pt-12 sm:w-6/12 -mt-16 sm:mt-0 w-100 max-h-860-px"
-          src="/img/homelogo.png"
+          className="absolute b-auto right-0 sm:w-6/12 -mt-16 sm:mt-0 w-100 max-h-860-px"
+          src="https://poshatwork.com/wp-content/uploads/2020/11/Online-Sexual-Harassment-900x506.jpg"
           alt="..."
         />
       </section>
