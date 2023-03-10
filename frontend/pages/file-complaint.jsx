@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { signIn, useSession, getSession } from "next-auth/react";
+import { useSession, getSession } from "next-auth/react";
 import Admin from "layouts/Admin.js";
-import DiseaseForm from "components/DiseaseForm";
+import FileComplaint from "components/FileComplaint";
 
 export default function Disease() {
   const { data: session, status } = useSession();
@@ -30,7 +30,9 @@ export default function Disease() {
     >
       <div className="flex flex-wrap mt-4 justify-center">
         <div className="w-full mb-12 xl:mb-0 px-4">
-          <div className="text-white">{session.user.name}</div>
+          <div className="text-white">
+            <FileComplaint />
+          </div>
         </div>
       </div>
     </Admin>

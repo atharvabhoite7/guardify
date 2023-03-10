@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { signIn, useSession, getSession } from "next-auth/react";
+import { useSession, getSession } from "next-auth/react";
 import Admin from "layouts/Admin.js";
-import DiseaseForm from "components/DiseaseForm";
+import FileComplaint from "components/FileComplaint";
+import CardTable from "components/Cards/CardTable";
+import axios from "axios";
 
-export default function Disease() {
+export default function Analyze({ usernames }) {
   const { data: session, status } = useSession();
-  console.log(session);
+  console.log(usernames);
   const [loading, setLoading] = useState(true);
 
   // useEffect(() => {
@@ -24,13 +26,15 @@ export default function Disease() {
   // }
   return (
     <Admin
-      title="File Complaints"
-      headerText="Enter your details here to file the complaint"
+      title="Analyze your followings"
+      headerText="Click the analyze button to analyze the tweets of your followings"
       image={session.user.image}
     >
       <div className="flex flex-wrap mt-4 justify-center">
         <div className="w-full mb-12 xl:mb-0 px-4">
-          <div className="text-white">{session.user.name}</div>
+          <div className="text-white">
+            <CardTable users={usernames} />
+          </div>
         </div>
       </div>
     </Admin>
@@ -49,7 +53,18 @@ export async function getServerSideProps({ req }) {
     };
   }
 
+  let usernames = [];
+  await axios
+    .get("http://127.0.0.1:5000/get-followings")
+    .then((res) => {
+      console.log(res.data);
+      usernames = res.data;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
   return {
-    props: { session },
+    props: { session, usernames: usernames },
   };
 }

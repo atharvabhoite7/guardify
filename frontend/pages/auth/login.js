@@ -36,7 +36,7 @@ export default function Login({ providers }) {
       redirect: false,
       email: values.email,
       password: values.password,
-      callbackUrl: "/disease",
+      callbackUrl: "/file-complaint",
     });
 
     if (status.ok) router.push(status.url);
@@ -51,7 +51,7 @@ export default function Login({ providers }) {
   });
 
   return (
-    <Layout title="Login / DEMETER">
+    <Layout title="Login / Guardify">
       <div className="container mx-auto px-4 h-full">
         <div className="flex content-center items-center justify-center h-full">
           <div className="w-full lg:w-4/12 px-4">
@@ -80,7 +80,7 @@ export default function Login({ providers }) {
                     type="button"
                     onClick={() =>
                       signIn("google", {
-                        callbackUrl: `${window.location.origin}/disease`,
+                        callbackUrl: `${window.location.origin}/file-complaint`,
                       })
                     }
                   >
