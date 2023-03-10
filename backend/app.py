@@ -8,9 +8,11 @@ import time
 from tweepy import API, Cursor, OAuthHandler, TweepyException
 import numpy as np
 import csv
+from flask_cors import CORS
 
 
 app = Flask(__name__)
+CORS(app)
 
 token = "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"
 consumer_key = "c3sFnv7hxrfgRk5zN4VT1tfpk"
@@ -36,29 +38,31 @@ api = API(auth, wait_on_rate_limit=True)
 #     print(tweet_text.text)
 
 
-@app.route("/scrape", methods=["POST"])
-def scrape1():
-    r = requests.get("https://twitter.com/user/status/1633845058675027970")
-    soup = BeautifulSoup(r.text, "html.parser")
+# @app.route("/scrape", methods=["POST"])
+# def scrape1():
+#     r = requests.get("https://twitter.com/user/status/1633845058675027970")
+#     soup = BeautifulSoup(r.text, "html.parser")
 
-    category = []
-    size = []
-    price = []
-    floor = []
-    for item in soup.findAll(
-        "span",
-        {"class": "css-901oao css-16my406 css-1hf3ou5 r-poiln3 r-bcqeeo r-qvutc0"},
-    ):
-        category.append(item.get_text(strip=True))
+#     category = []
+#     size = []
+#     price = []
+#     floor = []
+#     for item in soup.findAll(
+#         "span",
+#         {"class": "css-901oao css-16my406 css-1hf3ou5 r-poiln3 r-bcqeeo r-qvutc0"},
+#     ):
+#         category.append(item.get_text(strip=True))
 
-    print(category)
-    return "ok"
+#     print(category)
+#     return "ok"
 
 
-@app.route("/get-followers", methods=["POST"])
-def followers():
+@app.route("/get-followings", methods=["GET"])
+def followings():
     friend_ids = []
-    for fid in Cursor(api.get_friend_ids, screen_name="Hrishi_156", count=5000).items():
+    for fid in Cursor(
+        api.get_friend_ids, screen_name="shubham307pal", count=5000
+    ).items():
         friend_ids.append(fid)
 
     user_info = []
@@ -75,7 +79,24 @@ def followers():
     usernames = []
     for user in user_info:
         print(user._json["screen_name"])
-    return friend_ids
+        usernames.append(user._json["screen_name"])
+
+    print(usernames)
+    return usernames
+
+
+@app.route("/get-tweets", methods=["POST"])
+def tweets():
+    username = request.json["username"]
+    tweets = api.user_timeline(screen_name=username, count=200, tweet_mode="extended")
+    # print(tweets[0]._json["full_text"])
+
+    all_tweets = []
+
+    for tweet in tweets:
+        all_tweets.append(tweet._json["full_text"])
+
+    return all_tweets
 
 
 if __name__ == "__main__":

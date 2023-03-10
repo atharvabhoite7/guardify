@@ -3,10 +3,11 @@ import { useSession, getSession } from "next-auth/react";
 import Admin from "layouts/Admin.js";
 import FileComplaint from "components/FileComplaint";
 import CardTable from "components/Cards/CardTable";
+import axios from "axios";
 
-export default function Analyze() {
+export default function Analyze({ usernames }) {
   const { data: session, status } = useSession();
-  console.log(session);
+  console.log(usernames);
   const [loading, setLoading] = useState(true);
 
   // useEffect(() => {
@@ -32,7 +33,7 @@ export default function Analyze() {
       <div className="flex flex-wrap mt-4 justify-center">
         <div className="w-full mb-12 xl:mb-0 px-4">
           <div className="text-white">
-            <CardTable />
+            <CardTable users={usernames} />
           </div>
         </div>
       </div>
@@ -52,7 +53,18 @@ export async function getServerSideProps({ req }) {
     };
   }
 
+  let usernames = [];
+  await axios
+    .get("http://127.0.0.1:5000/get-followings")
+    .then((res) => {
+      console.log(res.data);
+      usernames = res.data;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
   return {
-    props: { session },
+    props: { session, usernames: usernames },
   };
 }
