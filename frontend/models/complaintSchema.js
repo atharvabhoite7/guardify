@@ -1,12 +1,16 @@
 import { Schema, model, models } from "mongoose";
 
-const complaintSchema = new Schema({
-  username: String,
+const ComplaintSchema = new Schema({
+  subject: String,
+  name: String,
+  address: String,
+  city: String,
+  code: Number,
+  phone: Number,
+  complaint: String,
   email: String,
-  reportedUser: String,
-
 });
 
-const Complaint = models.user || model("user", userSchema);
+const Complaint = models.Complaint || model("Complaint", ComplaintSchema);
 
-export default complaintSchema;
+export default Complaint;
