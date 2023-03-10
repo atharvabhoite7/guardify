@@ -16,7 +16,7 @@ class MyDocument extends Document {
           /> */}
           <link
             rel="icon"
-            href="https://res.cloudinary.com/atharva7/image/upload/v1664640503/samples/plantifylogo_ez5l1p.png"
+            href="https://res.cloudinary.com/atharva7/image/upload/v1678446486/samples/istockphoto-1335169133-612x612-removebg-preview_shco6q.png"
           />
         </Head>
         <body className="text-blueGray-700 antialiased">
