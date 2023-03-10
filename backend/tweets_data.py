@@ -91,12 +91,12 @@ print(df)
 # #                 print('Something went wrong, skipping...')
 # #         return user_info
 
-# #     def download_friends(self, handle):
-# #         '''Downloads friends of passed handle.'''
-# #         # now = time.strftime("_%Y-%m-%d-%H-%M-%S%Z")
-# #         filepath = handle +'_friends.csv'
-# #         ids = self.get_friend_ids(handle)
-# #         self.download(ids, filepath)
+def download_friends(self, handle):
+        '''Downloads friends of passed handle.'''
+        now = time.strfti/me("_%Y-%m-%d-%H-%M-%S%Z")
+        filepath = handle +'_friends.csv'
+        ids = self.get_friend_ids(handle)
+        self.download(ids, filepath)
 
 # #     def download_followers(self, handle):
 # #         '''Downloads followers of passed handle.'''

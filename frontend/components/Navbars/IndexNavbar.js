@@ -29,7 +29,7 @@ export default function Navbar(props) {
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             <div className="flex flex-row justify-around space-x-1">
               <img
-                src="https://res.cloudinary.com/atharva7/image/upload/v1664640503/samples/plantifylogo_ez5l1p.png"
+                src="https://res.cloudinary.com/atharva7/image/upload/v1678446486/samples/istockphoto-1335169133-612x612-removebg-preview_shco6q.png"
                 alt="up"
                 className="w-16 h-16 object-cover rounded-full cursor-pointer mt-1"
               />
