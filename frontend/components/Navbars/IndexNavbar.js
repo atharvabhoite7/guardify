@@ -80,13 +80,37 @@ export default function Navbar(props) {
                   </a>
                 </Link>
               </li>
-              {/* <li className="flex items-center">
-                <Link href="/disease">
+              <li className="flex items-center">
+                <Link href="/analyze">
                   <a className="hover:text-blueGray-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-sm uppercase font-bold">
-                    Disease
+                    Analyze Followings
+                    {/* <span className="lg:hidden inline-block ml-2">Share</span> */}
                   </a>
                 </Link>
-              </li> */}
+              </li>
+              <li className="flex items-center">
+                <Link href="/view-complaint">
+                  <a className="hover:text-blueGray-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-sm uppercase font-bold">
+                    View Complaints
+                    {/* <span className="lg:hidden inline-block ml-2">Share</span> */}
+                  </a>
+                </Link>
+              </li>
+              <li className="flex items-center">
+                <Link href="/text">
+                  <a className="hover:text-blueGray-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-sm uppercase font-bold">
+                    Analyze Text
+                    {/* <span className="lg:hidden inline-block ml-2">Share</span> */}
+                  </a>
+                </Link>
+              </li>
+              <li className="flex items-center">
+                <Link href="/cybercell">
+                  <a className="hover:text-blueGray-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-sm uppercase font-bold">
+                    CyberCell Locator
+                  </a>
+                </Link>
+              </li>
               <li className="flex items-center h-12">
                 <div
                   className="px-3 text-xs uppercase flex flex-row pb-1 font-bold"
@@ -108,13 +132,13 @@ export default function Navbar(props) {
                   </svg>
                 </div>
               </li>
-             
+
               <li className="text-sm mr-4 hover:underline md:mr-2">
                 <a href="tel: 1930">
                   <img src="https://img.icons8.com/external-flaticons-flat-flat-icons/64/000000/external-phone-web-flaticons-flat-flat-icons-3.png" />
                 </a>
               </li>
-              
+
               {/* <li className="flex items-center">
                 <a
                   className="hover:text-blueGray-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
