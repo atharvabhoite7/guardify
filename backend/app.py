@@ -9,10 +9,9 @@ from tweepy import API, Cursor, OAuthHandler, TweepyException
 import numpy as np
 import csv
 from flask_cors import CORS
+
 # from google.cloud import translate_v2 as translate
 from googletrans import Translator
-
-
 
 
 app = Flask(__name__)
@@ -65,12 +64,11 @@ api = API(auth, wait_on_rate_limit=True)
 #     return "ok"
 
 
-@app.route("/get-followings", methods=["GET"])
+@app.route("/get-followings", methods=["POST"])
 def followings():
+    userName = request.json["username"]
     friend_ids = []
-    for fid in Cursor(
-        api.get_friend_ids, screen_name="shubham307pal", count=5000
-    ).items():
+    for fid in Cursor(api.get_friend_ids, screen_name=userName, count=5000).items():
         friend_ids.append(fid)
 
     user_info = []
@@ -110,39 +108,38 @@ def tweets():
 @app.route("/analysis-text", methods=["POST"])
 def analysis():
     # Get the text input from the user
-    text = request.json['text']
+    text = request.json["text"]
 
     # detect the language of the text
     detected_lang = translator.detect(text).lang
 
     # translate the text to English
-    translated_text = translator.translate(text, dest='en')
+    translated_text = translator.translate(text, dest="en")
 
     # print the detected language and translated text
     print("Detected Language:", detected_lang)
     print("Translated Text:", translated_text.text)
 
     # Define the API endpoint
-    endpoint = 'http://localhost:3000/api/analyseTweet'
+    endpoint = "http://localhost:3000/api/analyseTweet"
 
     # Define any required headers or parameters
-    data = {'inputs': translated_text}
+    data = {"inputs": translated_text}
 
     # Make the API request
     response = requests.post(endpoint, data=data)
 
     # Check if the request was successful (status code 200)
     # if response.status_code == 200:
-        # Access the response data as a JSON object
+    # Access the response data as a JSON object
     data = response.json()
-        # Do something with the response data
+    # Do something with the response data
     print(data)
     # else:
-        # Handle any errors
-        # print('Error:', response.status_code)
+    # Handle any errors
+    # print('Error:', response.status_code)
 
     return jsonify(data[0])
-
 
 
 if __name__ == "__main__":
