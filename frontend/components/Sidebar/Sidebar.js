@@ -25,8 +25,8 @@ export default function Sidebar() {
     );
     document.body.appendChild(addScript);
     window.googleTranslateElementInit = googleTranslateElementInit;
-    console.log("kjnkas");
   }, []);
+
   return (
     <>
       <nav className="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-xl bg-white flex flex-wrap items-center justify-between relative md:w-64 z-10 py-4 px-6">
@@ -139,11 +139,11 @@ export default function Sidebar() {
               </li>
 
               <li className="items-center">
-                <Link href="/view-complaint">
+                <Link href="/analyze-text">
                   <a
                     className={
                       "text-sm uppercase py-3 font-bold block " +
-                      (router.pathname.indexOf("/view-complaint") !== -1
+                      (router.pathname.indexOf("/analyze-text") !== -1
                         ? "text-lightBlue-500 hover:text-lightBlue-600"
                         : "text-blueGray-700 hover:text-blueGray-500")
                     }
@@ -151,12 +151,12 @@ export default function Sidebar() {
                     <i
                       className={
                         "fas fa-tv mr-2 text-sm " +
-                        (router.pathname.indexOf("/view-complaint") !== -1
+                        (router.pathname.indexOf("/analyze-text") !== -1
                           ? "opacity-75"
                           : "text-blueGray-300")
                       }
                     ></i>{" "}
-                    View Complaints
+                    Analyze Text
                   </a>
                 </Link>
               </li>

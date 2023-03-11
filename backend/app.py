@@ -9,16 +9,24 @@ from tweepy import API, Cursor, OAuthHandler, TweepyException
 import numpy as np
 import csv
 from flask_cors import CORS
+# from google.cloud import translate_v2 as translate
+from googletrans import Translator
+
+
 
 
 app = Flask(__name__)
 CORS(app)
+
+translator = Translator()
+
 
 token = "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"
 consumer_key = "c3sFnv7hxrfgRk5zN4VT1tfpk"
 consumer_secret = "Tmr7cq2PLOUEA8nP2zrW5w5OT2yKieu5HE4FuOniyEZfin9Ktv"
 access_token = "1390587786491617282-5K8Sz2lHtG35RP1UzjHnkl1LvvkYyw"
 access_secret = "4CGdhXjBIlELdJqlm0vXdyQoDtslmVaNmgMebqSSs1ADf"
+
 auth = OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_secret)
 api = API(auth, wait_on_rate_limit=True)
@@ -97,6 +105,44 @@ def tweets():
         all_tweets.append(tweet._json["full_text"])
 
     return all_tweets
+
+
+@app.route("/analysis-text", methods=["POST"])
+def analysis():
+    # Get the text input from the user
+    text = request.json['text']
+
+    # detect the language of the text
+    detected_lang = translator.detect(text).lang
+
+    # translate the text to English
+    translated_text = translator.translate(text, dest='en')
+
+    # print the detected language and translated text
+    print("Detected Language:", detected_lang)
+    print("Translated Text:", translated_text.text)
+
+    # Define the API endpoint
+    endpoint = 'http://localhost:3000/api/analyseTweet'
+
+    # Define any required headers or parameters
+    data = {'inputs': translated_text}
+
+    # Make the API request
+    response = requests.post(endpoint, data=data)
+
+    # Check if the request was successful (status code 200)
+    # if response.status_code == 200:
+        # Access the response data as a JSON object
+    data = response.json()
+        # Do something with the response data
+    print(data)
+    # else:
+        # Handle any errors
+        # print('Error:', response.status_code)
+
+    return jsonify(data[0])
+
 
 
 if __name__ == "__main__":
