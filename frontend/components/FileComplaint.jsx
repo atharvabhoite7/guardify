@@ -1,10 +1,11 @@
 import React from "react";
-import Layout from "./Layout";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import axios from "axios";
 import ReactLoading from "react-loading";
 
-const FileComplaint = () => {
+const FileComplaint = ({ name }) => {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     subject: "",
     name: "",
@@ -33,38 +34,41 @@ const FileComplaint = () => {
     console.log(formData);
     let data = null;
 
-    // await axios
-    //   .post("http://localhost:3000/api/file-complaint", {
-    //     subject: formData.subject,
-    //     name: formData.name,
-    //     address: formData.address,
-    //     city: formData.city,
-    //     code: formData.code,
-    //     phone: formData.phone,
-    //     email: formData.email,
-    //     complaint: formData.complaint,
-    //   })
-    //   .then(function (response) {
-    //     setIsDisabled(false);
-    //     setIsLoading(false);
-    //     data = response.data;
-    //     console.log(data);
-    //     setOutput(data);
-    //     console.log(output);
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
-    // setFormData({
-    //   subject: "",
-    //   name: "",
-    //   address: "",
-    //   city: "",
-    //   code: "",
-    //   phone: "",
-    //   email: "",
-    //   complaint: "",
-    // });
+    await axios
+      .post("http://localhost:3000/api/fileComplaint", {
+        subject: formData.subject,
+        name: formData.name,
+        address: formData.address,
+        city: formData.city,
+        code: formData.code,
+        phone: formData.phone,
+        email: formData.email,
+        complaint: formData.complaint,
+        reportedName: name,
+      })
+      .then(function (response) {
+        setIsDisabled(false);
+        setIsLoading(false);
+        data = response.data;
+        console.log(data);
+        setOutput(data);
+        console.log(output);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    setFormData({
+      subject: "",
+      name: "",
+      address: "",
+      city: "",
+      code: "",
+      phone: "",
+      email: "",
+      complaint: "",
+    });
+    alert("Complaint sent successfully");
+    router.push("view-complaint");
   };
   return (
     <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
@@ -268,50 +272,6 @@ const FileComplaint = () => {
               )}
             </button>
           </div>
-
-          {output ? (
-            <div className="px-6 py-4 border-0 rounded relative my-4">
-              <div
-                class="bg-blue-100 border-t-4 border-blue-500 rounded-b flex text-blue-900 px-4 py-3 shadow-md"
-                role="alert"
-              >
-                <div class="flex">
-                  <div class="py-1">
-                    <svg
-                      class="fill-current h-6 w-6 text-blue-500 mr-4"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 20 20"
-                    >
-                      <path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z" />
-                    </svg>
-                  </div>
-                </div>
-                <div className="flex items-center">
-                  <p class="font-bold text-xl">Recommended Fertilizer: </p>
-                  <p class="text-lg ml-4">{output.name}</p>
-                </div>
-              </div>
-              <div className="flex justify-center mt-10">
-                <img className="w-96" src={output.img} alt="" />
-              </div>
-              <div className="mt-4">
-                <p class="font-bold text-xl">How to use: </p>
-                <p class="text-lg">{output.how_to_use}</p>
-              </div>
-              <div className="flex justify-center">
-                <span className="inline-block align-middle">
-                  <b className="capitalize"> </b>{" "}
-                </span>
-              </div>
-              <button className="absolute bg-transparent text-2xl font-semibold leading-none right-0 top-0 mt-4 mr-6 outline-none focus:outline-none">
-                <span></span>
-              </button>
-            </div>
-          ) : (
-            <div className="flex justify-center">
-              <img src="https://res.cloudinary.com/sarveshp46/image/upload/v1673158646/nothing-here_w38mzj.webp" />
-            </div>
-          )}
         </form>
       </div>
     </div>

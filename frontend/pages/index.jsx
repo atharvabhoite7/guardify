@@ -27,7 +27,7 @@ export default function Index() {
                 potentially harmful messages or posts.
               </p>
               <div className="mt-12">
-                <Link href="/file-complaint">
+                <Link href="/analyze">
                   <a className="get-started text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-blueGray-800 active:bg-blueGray-500 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150">
                     Get started
                   </a>
@@ -137,7 +137,7 @@ export default function Index() {
                         Automated flagging
                       </h6>
                       {/* <p className="mb-4 text-blueGray-500">
-                        Demeter allows you to identify dangerous crop diseases
+                        Guardify allows you to identify dangerous crop diseases
                         and apply an individual approach to treat them, thus
                         increasing disease prevention effectively.
                       </p> */}
@@ -198,7 +198,7 @@ export default function Index() {
                       {/* <p className="mb-4 text-blueGray-500">
                         The amount of fertilizers added to soil during the
                         period of cultivation can greatly affect the soil pH and
-                        nutrients. Know the right amount from Demeter.
+                        nutrients. Know the right amount from Guardify.
                       </p> */}
                     </div>
                   </div>
@@ -225,7 +225,7 @@ export default function Index() {
                       </h6>
                       {/* <p className="mb-4 text-blueGray-500">
                         Weather plays an important role in Agriculture. Know the
-                        weather with predictions from Demeter.
+                        weather with predictions from Guardify.
                       </p> */}
                     </div>
                   </div>
@@ -258,7 +258,7 @@ export default function Index() {
                 Disease Detection
               </h3>
               <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
-                Demeter allows you to identify dangerous crop diseases and apply
+                Guardify allows you to identify dangerous crop diseases and apply
                 an individual approach to treat them, thus increasing disease
                 prevention effectively.
               </p>
@@ -331,7 +331,7 @@ export default function Index() {
               <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
                 The amount of fertilizers added to soil during the period of
                 cultivation can greatly affect the soil pH and nutrients. Know
-                the right amount from Demeter.
+                the right amount from Guardify.
               </p>
               <div className="block pb-6">
                 <span className="text-xs font-semibold inline-block py-1 px-2  rounded-full text-blueGray-500 bg-white uppercase last:mr-0 mr-2 mt-2">
@@ -456,7 +456,7 @@ export default function Index() {
               </h3>
               <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
                 Weather plays an important role in Agriculture. Know the weather
-                with predictions from Demeter.
+                with predictions from Guardify.
               </p>
               <div className="block pb-6">
                 <span className="text-xs font-semibold inline-block py-1 px-2  rounded-full text-blueGray-500 bg-white uppercase last:mr-0 mr-2 mt-2">
@@ -518,7 +518,7 @@ export default function Index() {
                 Guardify - Smart Security
               </p>
               <div className="sm:block flex flex-col mt-10">
-                <Link href="/file-complaint">
+                <Link href="/analyze">
                   <a className="get-started text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-blueGray-800 active:bg-blueGray-500 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150">
                     Get started
                   </a>

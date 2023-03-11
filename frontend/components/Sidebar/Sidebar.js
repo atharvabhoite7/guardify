@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-
+import { useSession } from "next-auth/react";
 import NotificationDropdown from "components/Dropdowns/NotificationDropdown.js";
 import UserDropdown from "components/Dropdowns/UserDropdown.js";
 
@@ -25,8 +25,8 @@ export default function Sidebar() {
     );
     document.body.appendChild(addScript);
     window.googleTranslateElementInit = googleTranslateElementInit;
-    console.log("kjnkas");
   }, []);
+
   return (
     <>
       <nav className="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-xl bg-white flex flex-wrap items-center justify-between relative md:w-64 z-10 py-4 px-6">
@@ -42,7 +42,7 @@ export default function Sidebar() {
           {/* Brand */}
           <div className="flex flex-row justify-around ">
             <img
-              src="https://res.cloudinary.com/atharva7/image/upload/v1664640503/samples/plantifylogo_ez5l1p.png"
+              src="https://res.cloudinary.com/atharva7/image/upload/v1678446486/samples/istockphoto-1335169133-612x612-removebg-preview_shco6q.png"
               alt="up"
               className="w-16 h-16 object-cover rounded-full cursor-pointer mt-1"
             />
@@ -116,29 +116,6 @@ export default function Sidebar() {
 
             <ul className="md:flex-col md:min-w-full flex flex-col list-none">
               <li className="items-center">
-                <Link href="/file-complaint">
-                  <a
-                    className={
-                      "text-sm uppercase py-3 font-bold block " +
-                      (router.pathname.indexOf("/file-complaint") !== -1
-                        ? "text-lightBlue-500 hover:text-lightBlue-600"
-                        : "text-blueGray-700 hover:text-blueGray-500")
-                    }
-                  >
-                    <i
-                      className={
-                        "fas fa-tv mr-2 text-sm " +
-                        (router.pathname.indexOf("/file-complaint") !== -1
-                          ? "opacity-75"
-                          : "text-blueGray-300")
-                      }
-                    ></i>{" "}
-                    File Complaints
-                  </a>
-                </Link>
-              </li>
-
-              <li className="items-center">
                 <Link href="/analyze">
                   <a
                     className={
@@ -157,6 +134,29 @@ export default function Sidebar() {
                       }
                     ></i>{" "}
                     Analyze Followers
+                  </a>
+                </Link>
+              </li>
+
+              <li className="items-center">
+                <Link href="/analyze-text">
+                  <a
+                    className={
+                      "text-sm uppercase py-3 font-bold block " +
+                      (router.pathname.indexOf("/analyze-text") !== -1
+                        ? "text-lightBlue-500 hover:text-lightBlue-600"
+                        : "text-blueGray-700 hover:text-blueGray-500")
+                    }
+                  >
+                    <i
+                      className={
+                        "fas fa-tv mr-2 text-sm " +
+                        (router.pathname.indexOf("/analyze-text") !== -1
+                          ? "opacity-75"
+                          : "text-blueGray-300")
+                      }
+                    ></i>{" "}
+                    Analyze Text
                   </a>
                 </Link>
               </li>

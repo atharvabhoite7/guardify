@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSession, getSession } from "next-auth/react";
 import Admin from "layouts/Admin.js";
-import FileComplaint from "components/FileComplaint";
+import TextAnalysis from "components/TextAnalysis";
 
 export default function Disease() {
   const { data: session, status } = useSession();
@@ -29,14 +29,14 @@ export default function Disease() {
   // }
   return (
     <Admin
-      title="File Complaints"
-      headerText="Enter your details here to file the complaint"
+      title="Analyze Text"
+      headerText="Enter text to analyze"
       image={session.user.image}
     >
       <div className="flex flex-wrap mt-4 justify-center">
         <div className="w-full mb-12 xl:mb-0 px-4">
           <div className="text-white">
-            <FileComplaint name={name} />
+            <TextAnalysis name={name} />
           </div>
         </div>
       </div>
