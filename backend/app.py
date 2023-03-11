@@ -9,8 +9,6 @@ from tweepy import API, Cursor, OAuthHandler, TweepyException
 import numpy as np
 import csv
 from flask_cors import CORS
-
-# from google.cloud import translate_v2 as translate
 from googletrans import Translator
 import openai
 import os
@@ -142,12 +140,13 @@ def analysis():
 
     return jsonify(data[0])
 
+
 @app.route("/guideline-suggestion", methods=["POST"])
 def suggestion():
     data = request.json["complaint"]
     print(data)
     openai.api_key = os.getenv("OPENAI_API_KEY")
-    
+
     instructions = openai.Completion.create(
         model="text-davinci-003",
         prompt=f"What steps should I take if the following incident happens with me {data}",
@@ -157,6 +156,7 @@ def suggestion():
     print(instructions)
     analysis = instructions.choices[0].text
     return analysis
+
 
 if __name__ == "__main__":
     app.run()

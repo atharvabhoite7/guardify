@@ -28,7 +28,7 @@ const TextAnalysis = ({ name }) => {
     let data = null;
 
     await axios
-      .post("http://localhost:5000/analysis-text", {
+      .post("http://127.0.0.1:5000/analysis-text", {
         text: formData.text,
       })
       .then(function (response) {
