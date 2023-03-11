@@ -122,7 +122,26 @@ def analysis():
     print("Detected Language:", detected_lang)
     print("Translated Text:", translated_text.text)
 
-    return jsonify(translated_text.text)
+    # Define the API endpoint
+    endpoint = 'http://localhost:3000/api/analyseTweet'
+
+    # Define any required headers or parameters
+    data = {'inputs': translated_text}
+
+    # Make the API request
+    response = requests.post(endpoint, data=data)
+
+    # Check if the request was successful (status code 200)
+    # if response.status_code == 200:
+        # Access the response data as a JSON object
+    data = response.json()
+        # Do something with the response data
+    print(data)
+    # else:
+        # Handle any errors
+        # print('Error:', response.status_code)
+
+    return jsonify(data[0])
 
 
 

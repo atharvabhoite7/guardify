@@ -11,7 +11,7 @@ const TextAnalysis = ({ name }) => {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
-  const [output, setOutput] = useState(null);
+  const [output, setOutput] = useState([]);
   const handleChange = (event) => {
     setFormData((prevState) => {
       return {
@@ -29,24 +29,17 @@ const TextAnalysis = ({ name }) => {
 
     await axios
       .post("http://localhost:5000/analysis-text", {
-        subject: formData.text
+        text: formData.text
       })
-      .then(async function (response) {
-        await axios
-        .post("http://localhost:3000/api/textAnalysis", {
-          subject: formData.text
-        })
-        .then(function (response) {
-          setIsDisabled(false);
-          setIsLoading(false);
-          data = response.data;
-          console.log(data);
-          setOutput(data);
-          console.log(output);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+      .then(function (response) {
+
+
+        setIsDisabled(false);
+        setIsLoading(false);
+        data = response.data;
+        console.log(data);
+        setOutput(data);
+        console.log(output);
 
 
       })
@@ -69,15 +62,15 @@ const TextAnalysis = ({ name }) => {
           <div className="mb-3">
             <label
               className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-              htmlFor="complaint"
+              htmlFor="text"
             >
-              Complaint
+              Enter Text
             </label>
             <textarea
               className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-              id="complaint"
+              id="text"
               placeholder="Complaint"
-              name="complaint"
+              name="text"
               required
               rows={10}
               onChange={handleChange}
@@ -129,7 +122,7 @@ const TextAnalysis = ({ name }) => {
             </button>
           </div>
 
-          {output ? (
+          {output.length ? (
             <div className="px-6 py-4 border-0 rounded relative my-4">
               <div
                 class="bg-blue-100 border-t-4 border-blue-500 rounded-b flex text-blue-900 px-4 py-3 shadow-md"
@@ -147,17 +140,77 @@ const TextAnalysis = ({ name }) => {
                   </div>
                 </div>
                 <div className="flex items-center">
-                  <p class="font-bold text-xl">Recommended Fertilizer: </p>
-                  <p class="text-lg ml-4">{output.name}</p>
+                  <p class="font-bold text-xl">Hate: </p>
+                  <p class="text-lg ml-4">{(1- parseFloat(output[0].score)).toFixed(2)*100}%</p>
                 </div>
               </div>
-              <div className="flex justify-center mt-10">
-                <img className="w-96" src={output.img} alt="" />
+
+              <div
+                class="bg-blue-100 border-t-4 border-blue-500 rounded-b flex text-blue-900 px-4 py-3 shadow-md"
+                role="alert"
+              >
+                <div class="flex">
+                  <div class="py-1">
+                    <svg
+                      class="fill-current h-6 w-6 text-blue-500 mr-4"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                    >
+                      <path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z" />
+                    </svg>
+                  </div>
+                </div>
+                <div className="flex items-center">
+                  <p class="font-bold text-xl">{output[1].label}: </p>
+                  <p class="text-lg ml-4">{(parseFloat(output[1].score)).toFixed(2)*100}%</p>
+                </div>
               </div>
-              <div className="mt-4">
-                <p class="font-bold text-xl">How to use: </p>
-                <p class="text-lg">{output.how_to_use}</p>
+
+              <div
+                class="bg-blue-100 border-t-4 border-blue-500 rounded-b flex text-blue-900 px-4 py-3 shadow-md"
+                role="alert"
+              >
+                <div class="flex">
+                  <div class="py-1">
+                    <svg
+                      class="fill-current h-6 w-6 text-blue-500 mr-4"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                    >
+                      <path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z" />
+                    </svg>
+                  </div>
+                </div>
+                <div className="flex items-center">
+                  <p class="font-bold text-xl">Sexiest: </p>
+                  <p class="text-lg ml-4">{((1- parseFloat(output[2].score)).toFixed(2)-0.10)*100}%</p>
+                </div>
               </div>
+
+
+
+              {/* <div
+                class="bg-blue-100 border-t-4 border-blue-500 rounded-b flex text-blue-900 px-4 py-3 shadow-md"
+                role="alert"
+              >
+                <div class="flex">
+                  <div class="py-1">
+                    <svg
+                      class="fill-current h-6 w-6 text-blue-500 mr-4"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                    >
+                      <path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z" />
+                    </svg>
+                  </div>
+                </div>
+                <div className="flex items-center">
+                  <p class="font-bold text-xl">{output[4].label}: </p>
+                  <p class="text-lg ml-4">{(parseFloat(output[4].score)).toFixed(2)*100}%</p>
+                </div>
+              </div> */}
+
+
               <div className="flex justify-center">
                 <span className="inline-block align-middle">
                   <b className="capitalize"> </b>{" "}
