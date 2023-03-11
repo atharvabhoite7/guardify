@@ -207,6 +207,29 @@ export default function Sidebar() {
                 </Link>
               </li>
 
+              <li className="items-center">
+                <Link href="/guidelines">
+                  <a
+                    className={
+                      "text-sm uppercase py-3 font-bold block " +
+                      (router.pathname.indexOf("/guidelines") !== -1
+                        ? "text-lightBlue-500 hover:text-lightBlue-600"
+                        : "text-blueGray-700 hover:text-blueGray-500")
+                    }
+                  >
+                    <i
+                      className={
+                        "fas fa-tv mr-2 text-sm " +
+                        (router.pathname.indexOf("/guidelines") !== -1
+                          ? "opacity-75"
+                          : "text-blueGray-300")
+                      }
+                    ></i>{" "}
+                    Guidelines
+                  </a>
+                </Link>
+              </li>
+
               {/* <li className="items-center">
                 <Link href="/crop">
                   <a
