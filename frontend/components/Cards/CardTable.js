@@ -123,9 +123,12 @@ export default function CardTable({ color, users }) {
         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 text-left">
           <button
             type="button"
-            onClick={() => {
+            onClick={async () => {
               localStorage.setItem("name", user);
               router.push("/file-complaint");
+              await axios.post("http://localhost:3000/api/report-user", {
+                username: user,
+              });
             }}
             className="w-20 h-12 flex justify-center items-center text-md text-white bg-blueGray-800 hover:bg-blueGray-800 transition-all font-medium rounded-lg px-5 py-2.5 text-center"
           >

@@ -96,7 +96,7 @@ export default function Register() {
                     type="button"
                     onClick={() =>
                       signIn("google", {
-                        callbackUrl: `${window.location.origin}/file-complaint`,
+                        callbackUrl: `${window.location.origin}/view-complaint`,
                       })
                     }
                   >
