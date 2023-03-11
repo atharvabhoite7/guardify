@@ -5,25 +5,41 @@ import FileComplaint from "components/FileComplaint";
 import CardTable from "components/Cards/CardTable";
 import axios from "axios";
 
-export default function Analyze({ usernames }) {
+export default function Analyze() {
   const { data: session, status } = useSession();
-  console.log(usernames);
   const [loading, setLoading] = useState(true);
 
-  // useEffect(() => {
-  //   const securePage = () => {
-  //     if (status === "unauthenticated") {
-  //       signIn();
-  //     } else {
-  //       setLoading(false);
-  //     }
-  //   };
-  //   securePage();
-  // });
+  const [formData, setFormData] = useState({
+    username: "",
+  });
 
-  // if (loading) {
-  //   return <h2 style={{ marginTop: 100, textAlign: "center" }}>LOADING...</h2>;
-  // }
+  const handleChange = (event) => {
+    setFormData((prevState) => {
+      return {
+        ...prevState,
+        [event.target.name]: event.target.value,
+      };
+    });
+  };
+
+  const [usernames, setUsernames] = useState([]);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    console.log(formData);
+
+    await axios
+      .post("http://127.0.0.1:5000/get-followings", {
+        username: formData.username,
+      })
+      .then((res) => {
+        console.log(res.data);
+        setUsernames(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <Admin
       title="Analyze your followings"
@@ -33,7 +49,12 @@ export default function Analyze({ usernames }) {
       <div className="flex flex-wrap mt-4 justify-center">
         <div className="w-full mb-12 xl:mb-0 px-4">
           <div className="text-white">
-            <CardTable users={usernames} />
+            <CardTable
+              users={usernames}
+              formData={formData}
+              handleChange={handleChange}
+              handleSubmit={handleSubmit}
+            />
           </div>
         </div>
       </div>
@@ -53,18 +74,7 @@ export async function getServerSideProps({ req }) {
     };
   }
 
-  let usernames = [];
-  await axios
-    .get("http://127.0.0.1:5000/get-followings")
-    .then((res) => {
-      console.log(res.data);
-      usernames = res.data;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-
   return {
-    props: { session, usernames: usernames },
+    props: { session },
   };
 }
