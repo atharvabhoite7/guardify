@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSession, getSession } from "next-auth/react";
 import Admin from "layouts/Admin.js";
-import AllComplaints from "components/ViewComplaint";
+import AllComplaints from "components/ViewComplaintUser";
 import axios from "axios";
 
 export default function ViewComplaint({ complaints }) {
@@ -45,10 +45,11 @@ export async function getServerSideProps({ req }) {
 
   let complaints = [];
   await axios
-    .get("http://localhost:3000/api/get-all-complaints")
+    .post("http://localhost:3000/api/get-user-complaints", {
+      email: session.user.email,
+    })
     .then((response) => {
       complaints = response.data;
-      console.log(complaints);
     })
     .catch((err) => {
       console.log(err);
