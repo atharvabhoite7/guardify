@@ -4,7 +4,13 @@ import axios from "axios";
 import { useState } from "react";
 import { useRouter } from "next/router";
 
-export default function CardTable({ color, users }) {
+export default function CardTable({
+  color,
+  users,
+  formData,
+  handleChange,
+  handleSubmit,
+}) {
   const router = useRouter();
   const analyzeUser = async (user) => {
     let allTweets = [];
@@ -155,7 +161,26 @@ export default function CardTable({ color, users }) {
                   (color === "light" ? "text-blueGray-700" : "text-white")
                 }
               >
-                Your Followings
+                <div className="mb-3 mr-2">
+                  <form className="flex" onSubmit={handleSubmit}>
+                    <input
+                      className="mr-2 border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                      id="username"
+                      type="text"
+                      placeholder="Enter your twitter username"
+                      name="username"
+                      required
+                      onChange={handleChange}
+                      value={formData.username}
+                    />
+                    <button
+                      type="submit"
+                      className="ml-2 w-96 h-12 flex justify-center items-center text-md text-white bg-blueGray-800 hover:bg-blueGray-800 transition-all font-medium rounded-lg px-5 py-2.5 text-center"
+                    >
+                      Search
+                    </button>
+                  </form>
+                </div>
               </h3>
             </div>
           </div>

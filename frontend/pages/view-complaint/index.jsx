@@ -16,8 +16,8 @@ export default function ViewComplaint({ complaints }) {
 
   return (
     <Admin
-      title="File Complaints"
-      headerText="Enter your details here to file the complaint"
+      title="View Complaints"
+      headerText="View all your registered complaints"
       image={session.user.image}
     >
       <div className="flex flex-wrap mt-4 justify-center">
