@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-
+import { useSession } from "next-auth/react";
 import NotificationDropdown from "components/Dropdowns/NotificationDropdown.js";
 import UserDropdown from "components/Dropdowns/UserDropdown.js";
 
@@ -116,29 +116,6 @@ export default function Sidebar() {
 
             <ul className="md:flex-col md:min-w-full flex flex-col list-none">
               <li className="items-center">
-                <Link href="/file-complaint">
-                  <a
-                    className={
-                      "text-sm uppercase py-3 font-bold block " +
-                      (router.pathname.indexOf("/file-complaint") !== -1
-                        ? "text-lightBlue-500 hover:text-lightBlue-600"
-                        : "text-blueGray-700 hover:text-blueGray-500")
-                    }
-                  >
-                    <i
-                      className={
-                        "fas fa-tv mr-2 text-sm " +
-                        (router.pathname.indexOf("/file-complaint") !== -1
-                          ? "opacity-75"
-                          : "text-blueGray-300")
-                      }
-                    ></i>{" "}
-                    File Complaints
-                  </a>
-                </Link>
-              </li>
-
-              <li className="items-center">
                 <Link href="/analyze">
                   <a
                     className={
@@ -157,6 +134,29 @@ export default function Sidebar() {
                       }
                     ></i>{" "}
                     Analyze Followers
+                  </a>
+                </Link>
+              </li>
+
+              <li className="items-center">
+                <Link href="/view-complaint">
+                  <a
+                    className={
+                      "text-sm uppercase py-3 font-bold block " +
+                      (router.pathname.indexOf("/view-complaint") !== -1
+                        ? "text-lightBlue-500 hover:text-lightBlue-600"
+                        : "text-blueGray-700 hover:text-blueGray-500")
+                    }
+                  >
+                    <i
+                      className={
+                        "fas fa-tv mr-2 text-sm " +
+                        (router.pathname.indexOf("/view-complaint") !== -1
+                          ? "opacity-75"
+                          : "text-blueGray-300")
+                      }
+                    ></i>{" "}
+                    View Complaints
                   </a>
                 </Link>
               </li>

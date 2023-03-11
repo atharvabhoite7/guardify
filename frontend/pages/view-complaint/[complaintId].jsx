@@ -1,17 +1,30 @@
 import React, { useState, useEffect } from "react";
 import { useSession, getSession } from "next-auth/react";
 import Admin from "layouts/Admin.js";
-import AllComplaints from "components/ViewComplaint";
+import AllComplaints from "components/ViewComplaintUser";
 import axios from "axios";
+import { useRouter } from "next/router";
+import ComplaintDetails from "components/ComplaintDetailsUser";
 
-export default function ViewComplaint({ complaints }) {
+export default function ViewComplaint() {
+  const router = useRouter();
+  const path = router.asPath.split("/")[2];
   const { data: session, status } = useSession();
-  console.log(complaints);
   const [loading, setLoading] = useState(true);
   const [name, setName] = useState("");
+  const [complaintData, setComplaintData] = useState({
+    subject: "",
+  });
 
   useEffect(() => {
     setName(localStorage.getItem("name"));
+    axios
+      .post("http://localhost:3000/api/get-complaints-by-id", {
+        id: path,
+      })
+      .then((res) => {
+        setComplaintData(res.data);
+      });
   }, []);
 
   return (
@@ -23,7 +36,7 @@ export default function ViewComplaint({ complaints }) {
       <div className="flex flex-wrap mt-4 justify-center">
         <div className="w-full mb-12 xl:mb-0 px-4">
           <div className="text-white">
-            <AllComplaints complaints={complaints} />
+            <ComplaintDetails complaintData={complaintData} />
           </div>
         </div>
       </div>
@@ -43,17 +56,7 @@ export async function getServerSideProps({ req }) {
     };
   }
 
-  let complaints = [];
-  await axios
-    .get("http://localhost:3000/api/get-all-complaints")
-    .then((response) => {
-      complaints = response.data;
-      console.log(complaints);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
   return {
-    props: { session, complaints },
+    props: { session },
   };
 }

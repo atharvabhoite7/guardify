@@ -9,6 +9,11 @@ const ComplaintSchema = new Schema({
   phone: Number,
   complaint: String,
   email: String,
+  reportedName: String,
+  status: {
+    type: String,
+    default: "In Progress",
+  },
 });
 
 const Complaint = models.Complaint || model("Complaint", ComplaintSchema);

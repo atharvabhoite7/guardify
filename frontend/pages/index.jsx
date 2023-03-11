@@ -27,7 +27,7 @@ export default function Index() {
                 potentially harmful messages or posts.
               </p>
               <div className="mt-12">
-                <Link href="/file-complaint">
+                <Link href="/analyze">
                   <a className="get-started text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-blueGray-800 active:bg-blueGray-500 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150">
                     Get started
                   </a>
@@ -518,7 +518,7 @@ export default function Index() {
                 Guardify - Smart Security
               </p>
               <div className="sm:block flex flex-col mt-10">
-                <Link href="/file-complaint">
+                <Link href="/analyze">
                   <a className="get-started text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-blueGray-800 active:bg-blueGray-500 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150">
                     Get started
                   </a>
